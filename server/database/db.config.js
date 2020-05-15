@@ -2,7 +2,7 @@ config = {
     host: 'seg27paani.mysql.database.azure.com',
     user: 'shahsahab@seg27paani',
     password: 'DoveMenCare!',
-    database: 'paani'
+    database: 'seg27-paani'
 }
 
 module.exports = config

@@ -1,5 +1,15 @@
+/*
+    SERVER ENTRY POINT
+    
+    * Routes and controllers are defined in /routes
+
+    * Responses look like this
+        {error: <error msg>} or 
+        {error: false, msg: <response>} so always check for the error first.
+*/
+
 const express = require('express');
-const morgan = require('morgan');
+const morgan = require('morgan'); // logging
 const bodyparser = require('body-parser');
 
 const app = express();
@@ -7,22 +17,17 @@ app.use(morgan('combined'))
 app.use(bodyparser.json()) 
 app.use(bodyparser.urlencoded({ extended: true }))
 
-
 // setting up routes
-const userRoutes = require('./routes/user.routes');
-const customerRoutes = require('./routes/customer.routes');
-const companyRoutes = require('./routes/company.routes');
-const orderRoutes = require('./routes/order.routes');
-
-app.use('/users', userRoutes);
-app.use('/customers', customerRoutes);
-app.use('/companies', companyRoutes);
-app.use('/orders', orderRoutes);
-
-app.get('/', (req, res) => {
-    res.send('Software Engineering Group 27<br>It works!');
-})
-
+app.use('/users', require('./routes/users.routes'));
+app.use('/companies', require('./routes/companies.routes'));
+app.use('/drivers', require('./routes/drivers.routes'));
+app.use('/packages', require('./routes/packages.routes'));
+app.use('/orders', require('./routes/orders.routes'));
+app.use('/customers', require('./routes/customers.routes'));
+app.use('/reviews', require('./routes/reviews.routes'));
+/* import your routes here like so:
+    app.use('/packages', require('./routes/packages.routes));
+*/
 
 // start the server
 port = process.env.PORT || 7777

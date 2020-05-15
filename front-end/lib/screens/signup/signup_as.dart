@@ -1,11 +1,6 @@
-/*
-  Choose whether to login or signup
-  First screen a user sees if they're logged out.
-*/
-
 import 'package:flutter/material.dart';
 
-class IndexScreen extends StatelessWidget {
+class SignupAsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,20 +10,20 @@ class IndexScreen extends StatelessWidget {
         child: Column(
           children: <Widget>[
             Image.asset(
-              'assets/logo_transparentbg.png',
+              'assets/logo_transparentbg.png', // paani logo
               width: 400.0,
               height: 200.0,
               fit: BoxFit.fill,
             ),
-            customButton('LOG IN', () {
-              Navigator.pushNamed(context, '/login');
+            customButton('CUSTOMER', () {
+              Navigator.pushNamed(context, '/customer_signup'); 
             }),
-            customButton('SIGN UP', () {
-              Navigator.pushNamed(context, '/signup_as');
+            customButton('COMPANY', () {
+              Navigator.pushNamed(context, '/company_signup');
             }),
           ]
         ),
-      ),
+      )
     );
   }
 }
